@@ -19,6 +19,7 @@ const Header = () => {
       <motion.div className="title"
         initial={{ position: 'relative', top: -250}}
         animate={{ top: -10 }}
+        transition={{ delay: 0.2, type: "tween", stiffness:120}}
       >
         <h1>Pizza Joint</h1>
       </motion.div>
