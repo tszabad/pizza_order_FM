@@ -12,7 +12,27 @@ const containerVariants = {
     x: 0,
     transition: { type: 'spring', delay: 0.5 }
   },
+  exit: {
+    x: "-100vh",
+    transition: { ease: 'easeInOut' }
+  }
 };
+
+const buttonVariants = {
+  visible: {
+    x: [0, -20, 20, -20, 20, 0],
+   transition: { delay: 2 }
+  },
+ hover: {
+   scale:  1.1,
+   textShadow: "0px 0px 8px rgb(255,255,255)",
+   boxShadow: "0px 0px 8px rgb(255,255,255)",
+   transition: {
+     duration: 0.2,
+     yoyo: Infinity
+   }
+ }
+}
 
 const Toppings = ({ addTopping, pizza }) => {
   let toppings = ['mushrooms', 'peppers', 'onions', 'olives', 'extra cheese', 'tomatoes'];
@@ -22,6 +42,7 @@ const Toppings = ({ addTopping, pizza }) => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      exit="exit"
     >
       
       <h3>Step 2: Choose Toppings</h3>
@@ -41,12 +62,9 @@ const Toppings = ({ addTopping, pizza }) => {
 
       <Link to="/order">
         <motion.button
-        whileHover={{
-            scale:1.1,
-            textShadow: "0px 0px 8px rgb(255,255,255)",
-            boxShadow: "0px 0px 8px rgb(255,255,255)",
-          
-          }}>
+             variants={buttonVariants}
+            whileHover="hover"
+          >
           Order
         </motion.button>
       </Link>
